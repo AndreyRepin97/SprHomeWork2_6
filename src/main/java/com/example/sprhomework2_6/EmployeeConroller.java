@@ -3,6 +3,8 @@ package com.example.sprhomework2_6;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+
 @ResponseStatus
 @RequestMapping("/Employee")
 @RestController
@@ -25,7 +27,7 @@ public class EmployeeConroller {
         return employeeService.findEmpl(firstName,secondName);
     }
     @GetMapping("/killEmpl")
-    public Employee killEmpl(@RequestParam(value = "firstName", required = false)String firstName,
+    public String killEmpl(@RequestParam(value = "firstName", required = false)String firstName,
                            @RequestParam(value = "secondName", required = false)String secondName) {
         return employeeService.killEmpl(firstName,secondName);
     }
@@ -38,7 +40,7 @@ public class EmployeeConroller {
 
 
     @GetMapping("/printMassive")
-    public List<Employee> printMassive() {//Employee[]
+    public Map<String, Employee> printMassive() {//Employee[]
         //System.out.println(employeeService.emploees);
         return employeeService.emploees;
     }

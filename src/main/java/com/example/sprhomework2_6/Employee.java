@@ -30,18 +30,18 @@ public class Employee {
         return Objects.hash(secondName, firstName);
     }
 
+
+
+
     public String getFirstName() {
         return firstName;
     }
     public String getSecondName() {
         return secondName;
     }
-
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
     public void setSecondName(String secondName) {
         this.secondName = secondName;
     }
