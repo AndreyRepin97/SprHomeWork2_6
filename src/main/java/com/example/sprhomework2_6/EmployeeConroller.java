@@ -1,14 +1,13 @@
 package com.example.sprhomework2_6;
-//
-import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-@ResponseStatus
 @RequestMapping("/Employee")
 @RestController
 public class EmployeeConroller {
+
     private final EmployeeService employeeService;
 
     public EmployeeConroller(EmployeeService employeeService){
@@ -33,28 +32,15 @@ public class EmployeeConroller {
     }
     @GetMapping("/addEmpl")
     public Employee addEmpl(@RequestParam(value = "firstName", required = false)String firstName,
-                          @RequestParam(value = "secondName", required = false)String secondName) {
-        return employeeService.addEmpl(firstName,secondName);
+                          @RequestParam(value = "secondName", required = false)String secondName,
+                            @RequestParam(value = "salary", required = false)double salary,
+                            @RequestParam(value = "depart", required = false)int depart) {
+        return employeeService.addEmpl(firstName, secondName, salary, depart);
     }
-
-
-
     @GetMapping("/printMassive")
-    public Map<String, Employee> printMassive() {//Employee[]
-        //System.out.println(employeeService.emploees);
-        return employeeService.emploees;
+    public List<Employee> getAll() {
+        return employeeService.getAll();
     }
 
-
-/*
-    @GetMapping("/firstName")
-    public String enteringFirstName(@RequestParam(value = "firstName", required = false)String firstName){
-        return firstName;
-    }
-    @GetMapping("/secondName")
-    public String enteringSecondName(@RequestParam(value = "secondName", required = false)String secondName){
-        return secondName;
-    }
-*/
 
 }
